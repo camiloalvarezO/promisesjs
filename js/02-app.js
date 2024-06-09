@@ -1,32 +1,27 @@
-// Listado de paises
-const paises = [];
+let paises = ['Alemania'];
 
-// Un nuevo pais se agrega despues de 2 segundos...
-function nuevoPais(pais, callback) {
+function agregarPaises(pais,callback){
     paises.push(pais);
-    console.log(`Agregado: ${pais}`)
+    console.log(`país agregado: ${pais}`);
     callback();
 }
 
-function mostrarPaises() {
+function mostrarPaises(){
     console.log(paises);
 }
 
-// Los paises se muestran despues de 1 segundo
-function iniciarCallbackHell() {
+
+function iniciarCallbackHell(){
     setTimeout(() => {
-        // Agregar nuevo pais
-        nuevoPais('Alemania', mostrarPaises); 
-        setTimeout(  () =>  {
-            nuevoPais('Francia', mostrarPaises);
-            setTimeout(() => { 
-                nuevoPais('Inglaterra', mostrarPaises);
-            }, 3000);
-        }, 3000 ); // Después de un segundo obtenemos los paises...
-    }, 3000);
+        agregarPaises('Chile',mostrarPaises)
+        setTimeout(() => {
+          agregarPaises('colombia',mostrarPaises)
+          setTimeout(() => {
+                agregarPaises('peru',mostrarPaises)
+          }, 2000);  
+        }, 2000);
+    }, 2000);
 }
 
-iniciarCallbackHell(); // Opcional
 
-
-// mostrarPaises es el callback, una vez agregado alemania se va a ejecutar esa linea...
+iniciarCallbackHell();
